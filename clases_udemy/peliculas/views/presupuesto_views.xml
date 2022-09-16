@@ -12,6 +12,18 @@
                     <button string="Cancelar" type="object" name="cancelar_presupuesto" states="borrador,aprobado"/>
                     <field name="state" widget="statusbar" statusbar_visible="borrador,aprobado"/>
                 </header>
+                <div class="alert alert-info" role="alert" style="margin-bottom: 0px" attrs="{'invisible': [('dsc_clasification', '=', False)]}">
+                    <field name="dsc_clasification" readonly="1" force_save="1"/>
+                </div>
+                <!--<div class="alert alert-success" role="alert" style="margin-bottom: 0px" attrs="{'invisible': [('dsc_clasification', '=', False)]}">
+                    <field name="dsc_clasification" readonly="1" force_save="1"/>
+                </div>
+                <div class="alert alert-warning" role="alert" style="margin-bottom: 0px" attrs="{'invisible': [('dsc_clasification', '=', False)]}">
+                    <field name="dsc_clasification" readonly="1" force_save="1"/>
+                </div>
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0px" attrs="{'invisible': [('dsc_clasification', '=', False)]}">
+                    <field name="dsc_clasification" readonly="1" force_save="1"/>
+                </div>-->
                 <!-- sheet, efecto de hoja !-->
                 <sheet>
 <!--                    <center>-->

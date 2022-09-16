@@ -23,6 +23,8 @@ class Presupuesto(models.Model):
         ('R', 'R'), #En compania de un adulto obligatorio
         ('NC-17', 'NC-17') #Mayores de 18
     ], string='Clasificación')
+
+    dsc_clasification = fields.Char(String='Descripcion clasificacion')
     fch_estreno = fields.Date(string='Fecha de Estreno')
     puntuacion = fields.Integer(string='Puntuación', related="puntuacion2")
     #puntuacion2 es una copia de puntuacion para que los 2 valores sean iguales
@@ -99,6 +101,25 @@ class Presupuesto(models.Model):
         default['clasification'] = 'NC-17'
 
         return super(Presupuesto, self).copy(default)
+
+    @api.onchange('clasification')
+    def _onchange_clasification(self):
+        if self.clasification:
+            if self.clasification == 'G':
+                self.dsc_clasification='Publico General'
+            if self.clasification == 'PG':
+                self.dsc_clasification='Pokemon Go'
+            if self.clasification == 'PG-13':
+                self.dsc_clasification='Pokemon Go 13'
+            if self.clasification == 'R':
+                self.dsc_clasification='Ratata'
+            if self.clasification == 'NC-17':
+                self.dsc_clasification='Nota de Credito 17'
+        else:
+            self.dsc_clasification = False
+
+
+
     '''  METODO 1 
     def unlink(self):
         logger.info('************** se disparo la funcion unlink')
