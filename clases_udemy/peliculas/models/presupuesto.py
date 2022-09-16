@@ -92,6 +92,13 @@ class Presupuesto(models.Model):
             raise UserError('La clasificacion no se puede editar !! ')
         return super(Presupuesto, self).write(variables)
 
+    def copy(self, default = None):
+        default = dict(default or {})
+        default['name'] = self.name + ' (copia)'
+        default['puntuacion2'] = 1
+        default['clasification'] = 'NC-17'
+
+        return super(Presupuesto, self).copy(default)
     '''  METODO 1 
     def unlink(self):
         logger.info('************** se disparo la funcion unlink')
