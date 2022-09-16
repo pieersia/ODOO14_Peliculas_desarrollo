@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- esqueleto de la vista !-->
+<odoo>
+    <record id="view_presupuesto_form" model="ir.ui.view">
+        <field name="name">Vista Formulario de presupuesto de peliculas</field>
+        <field name="model">presupuesto</field>
+        <field name="arch" type="xml">
+            <!-- formulario para columna derecha e izquierda !-->
+            <form>
+                <header>
+                    <button string="Aprobar" type="object" name="aprobar_presupuesto" class="oe_highlight" states="borrador"/>
+                    <button string="Cancelar" type="object" name="cancelar_presupuesto" states="borrador,aprobado"/>
+                    <field name="state" widget="statusbar" statusbar_visible="borrador,aprobado"/>
+                </header>
+                <!-- sheet, efecto de hoja !-->
+                <sheet>
+<!--                    <center>-->
+<!--                        <h1 style ="color:red"> TITULO  !! </h1>-->
+<!--                    </center>-->
+                    <widget name="web_ribbon" title="Archivado" bgcolor="bg-danger" attrs="{'invisible': [('active', '=', True)]}" />
+                    <!-- para agregar imagen !-->
+                    <field name="image_1920" widget="image" class="oe_avatar"
+                           options="{'preview_image': 'image_128', 'size': ['',128]}"/><!-- preview es que tipo de imagen,   size es el ancho por alto !-->
+
+                    <div class="oe_title">
+                        <!-- mensaje a la izquier de la hoja !-->
+                        <div class="o_row">
+                            <field name="active" invisible="1"/>
+                            <!-- stilo display flex, es para que el tamaño de las cajas de texto se acomoden !-->
+                            <h1 style="display:flex;">
+                                <!-- default focus es para que sea el campo por defecto !-->
+                                <!-- la clase eo online es para que este todos en la misma fila
+                                     se pone en todos los field que quieras, para que esten en cola!-->
+                                <field name="name"
+                                        placeholder="Nombre de la Pelicula"
+                                        required="1"
+                                        default_focus="1" class="oe_inline"/>
+                                <!--Para quitar el nombre del porcentaje, poner string y un espacio!-->
+                                <!-- Style y padding-left es para darle espacio al porcentaje de el nombre!-->
+                                <field name="puntuacion" widget="percentpie" string=" " style="padding-left: 10px;" class="oe_inline"/>
+                                <!-- la clase oe edit only es para que solo se muestre cuando se edite la hoja !-->
+                                <field name="puntuacion2" class="oe_edit_only oe_inline"/>
+                            </h1>
+                        </div>
+                        <div class="o_row" style="display: flex;">
+                            <field name="clasification" required="1"/>
+                            <!-- PONER CONDICIONAL AL PUNTO FA-CIRCLE CON attrs !-->
+                            <span class="fa fa-circle" attrs="{'invisible':[('clasification', '=', False),('fch_estreno', '=', False)]}"
+                                  style="font-size: 8px; padding: 5px 5px;"/> <!-- cambiar el tamaño del circulo con font size y para separar con espacios es padding !-->
+                            <field name="fch_estreno" />
+                        </div>
+                        <div class="o_row">
+                            <!-- para convertir en etiqueta es many2many tags(etiquetas) !-->
+                            <field name="genero_ids" widget="many2many_tags" style="display:flex;"/>
+                        </div>
+                    </div>
+                    <!-- texto morado !-->
+                    <group string="Datos Principales" style="margin-top: -30px;">
+                        <field name="vista_general" placeholder="Vista General.. " attrs="{'readonly':[('state', '!=', 'borrador')]}"/>
+                        <group>
+                            <field name="director_id"
+                                   domain="[('category_id', 'in', [categoria_director_id])]"
+                                   options="{'no_create': True, 'no_open': True}"/>
+                            <field name="categoria_director_id" invisible="1"/>
+                            <field name="link_trailer" widget="url"/>
+                            <field name="fch_aprobado" readonly="1"/>
+
+                        </group>
+                        <group>
+                            <field name="es_libro" widget="boolean_toggle"/>
+                            <field name="libro"  filename="libro_filename" attrs="{'invisible': [('es_libro','=', False)]}"/>
+                            <field name="libro_filename" invisible="1"/>
+                        </group>
+
+                    </group>
+
+
+
+
+<!--                    <group>-->
+<!--                        &lt;!&ndash; columna izquierda !&ndash;&gt;-->
+<!--                        <group>-->
+<!--                           &lt;!&ndash; <field name="name"/> !&ndash;&gt;-->
+<!--                            <field name="clasification"/>-->
+<!--                        </group>-->
+<!--                        &lt;!&ndash; columna derecha !&ndash;&gt;-->
+<!--                        <group>-->
+<!--                            &lt;!&ndash; <field name="puntuacion"/>!&ndash;&gt;-->
+<!--                            <field name="active" invisible="1"/>-->
+<!--                        </group>-->
+<!--                    </group>-->
+
+                </sheet>
+                <!--  SCRIPTS EN XML !-->
+<!--                <script>-->
+<!--                    console.log('hola mundo');-->
+<!--                </script>-->
+            </form>
+        </field>
+
+    </record>
+</odoo>

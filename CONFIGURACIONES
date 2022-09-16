@@ -1,0 +1,37 @@
+******** CONFIGURACION SHELL *******
+Get-ExecutionPolicy -list    ---PARA VER LA CONFIGURACION
+
+******** Los modos de ejecución que se pueden especificar son los siguientes ************
+
+• Restricted (Restringida): es la regla por defecto. Permite la ejecución de comandos individuales pero no de archivos de scripts, incluyendo los archivos de configuración y formato (.ps1xml), los archivos de scripts de módulos (.psm1) y los perfiles de Windows PowerShell (.ps1).
+
+• Allsigned (Solo firmas): permite ejecutar scripts firmados por un editor de confianza, incluyendo los scripts que se escriban en el equipo local. Solicita confirmación antes de ejecutar scripts de publicadores que no hayan sido clasificados como de confianza.
+
+• Remotesigned (Firma remota): permite la ejecución de scripts descargados de internet firmados digitalmente por un editor de confianza. No requiere firma digital en los scripts que hayan sido escritos en el equipo local.
+
+• Unrestricted (Sin restricción): permite ejecutar scripts sin firmar. Advierte al usuario antes de ejecutar archivos de configuración y scripts descargados de Internet con el fin de añadir seguridad.
+
+• Bypass: esta directiva no bloquea nada y no muestra advertencias de seguridad. Pensado para programas que integran un script de Windows PowerShell en una aplicación compleja.
+
+• Undefined (Indefinido): esta opción indica que no existe ninguna directiva de ejecución establecida. Si la directiva de ejecución en todos los ámbitos es Undefined, la directiva de ejecución será Restricted, que es la directiva de ejecución por defecto en Windows.
+
+********* Para poder ejecutar archivos .ps1 con scripts de Power Shell sin problemas **********
+Set-ExecutionPolicy -Scope CurrentUser unrestricted   -- cambia la seguridad
+Get-ExecutionPolicy -list    --- para verificar el cambio
+
+
+************* Configuracion de un nuevo python  odoo14_com - Parametros*****
+parametros se pone de esta manera   --- > --conf="E:\SEAD\CURSO EDUARDO\odoo14\o14_com.conf"
+Para filtrar la base de datos,
+  cuando tienes diferentes versiones cooriendo al mismo tiempo
+   de ODOO es bueno poner "--db-filter="--> --conf="E:\SEAD\CURSO EDUARDO\odoo14\o14_com.conf" --db-filter=^db_pru* --http-port 8071 -d db_prueba -u peliculas
+Para cambiar el puerto: --http-port 8071
+Para seleccionar la BD: -d o14-com-sicurezza   **tener cuidado, poner el nombre correcto de la BD, osino creara uno nuevo**
+Para actualizar el modulo: -u peliculas   **peliculas, nombre de la carpeta**
+Para actualizar varios modulos: -u peliculas,otro_modulo
+Para instalar modulo: -i peliculas
+   ---RECOMENDACION: PONER NOMBRE DE LA BD "o14-com-sicurezza", version-community-nombre de la instancia ----------
+
+
+ ////////  ICONOS PARA ODOO ////////
+ https://fontawesome.com/v4/icons/

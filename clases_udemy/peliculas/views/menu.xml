@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- ESTO ES LA ACCION DEL MENU ITEM "menu_vertical_presupuesto" !-->
+    <record id="accion_open_presupuesto" model="ir.actions.act_window">
+        <field name="name">Presupuesto</field>
+        <!-- Modelo del archivo models/presupuesto.py del _name = "presupuesto" -->
+        <field name="res_model">presupuesto</field>
+        <!-- tree, es lista.  form, es formulario !-->
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Formulario principal de los MENUS !-->
+    <menuitem id="menu_principal" name="Peliculaas"/>
+    <menuitem id="menu_horizontal" name="Mis modelos" parent="menu_principal"/>
+    <menuitem id="menu_vertical_presupuesto" name="Presupuesto" parent="menu_horizontal" action="accion_open_presupuesto"/>
+    <!-- !!NO PONER LA ACCION ABAJO DEL MENU ITEM, YA QUE NO SE PODRA LEER !-->
+
+
+    <!-- ESTO ES OTRO MENU  !-->
+
+
+    <!-- ESTO ES LA ACCION DEL MENU ITEM "menu_vertical_presupuesto" !-->
+
+    <record id="accion_open_gastos" model="ir.actions.act_window">
+        <field name="name">Gastos</field>
+        <!-- Modelo del archivo models/presupuesto.py del _name = "presupuesto" !-->
+        <field name="res_model">presupuesto</field>
+        <!-- tree, es lista.  form, es formulario !-->
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Formulario principal de los MENUS !-->
+    <menuitem id="menu_principales" name="Gastos"/>
+    <menuitem id="menu_horizontales" name="Mis Gastos" parent="menu_principales"/>
+    <menuitem id="menu_vertical_gastos" name="Gasto" parent="menu_horizontales" action="accion_open_gastos"/>
+    <!-- !!NO PONER LA ACCION ABAJO DEL MENU ITEM, YA QUE NO SE PODRA LEER !-->
+
+
+</odoo>
