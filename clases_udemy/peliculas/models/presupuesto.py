@@ -43,7 +43,12 @@ class Presupuesto(models.Model):
     categoria_director_id = fields.Many2one(
         comodel_name='res.partner.category',
         string='Categoria Director',
-        default=lambda  self: self.env['res.partner.category'].search([('name', '=', 'director')])
+
+        #Version 2
+        default=lambda self: self.env.ref('peliculas.category_director')
+
+        #Version 1
+        #default=lambda  self: self.env['res.partner.category'].search([('name', '=', 'director')])
 
     )
 
