@@ -84,9 +84,20 @@ class Presupuesto(models.Model):
     ''' metodo 2 '''
     def unlink(self):
         logger.info('************** se disparo la funcion unlink')
-        if  self.state != 'cancelado':
-            raise UserError('No se puede eliminar el registro, porque no se encuentra en estado cancelado')
-        super(Presupuesto, self).unlink()
+        #--Version 2 para eliminar varios registros
+        #1ro, va un for record, 2do, se cambia el self por el record
+        for record in self:
+            if record.state != 'cancelado':
+                raise UserError('No se puede eliminar el registro, porque no se encuentra en estado cancelado')
+            super(Presupuesto, record).unlink()
+
+        # ---  version 1  cuando se elimina solo 1 archivo --------
+        # if  self.state != 'cancelado':
+        #     raise UserError('No se puede eliminar el registro, porque no se encuentra en estado cancelado')
+        # super(Presupuesto, self).unlink()
+        #--- este es el error ValueError: Expected singleton: presupuesto(4, 5, 6, 9, 10)---
+        #-----------------------------------------------------------
+
 
     @api.model
     def create(self, variables):
