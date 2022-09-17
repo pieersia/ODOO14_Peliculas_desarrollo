@@ -70,7 +70,7 @@ class Presupuesto(models.Model):
                              ], default='borrador', string='Estados', copy=False)
     fch_aprobado = fields.Datetime(string='Fecha aprobado', copy=False)
 
-
+    numero_presupuesto = fields.Char(string='Numero Presupuesto', copy=False)
     def aprobar_presupuesto(self):
         logger.info('Entro a la funcion aprobar presupuesto')
         self.state = 'aprobado'
@@ -91,6 +91,11 @@ class Presupuesto(models.Model):
     @api.model
     def create(self, variables):
         logger.info('********** variables: {0}'.format(variables))
+        #---- correlativos para documentos ---
+        sequence_obj = self.env['ir.sequence']
+        correlativo = sequence_obj.next_by_code('secuencia.presupuesto.pelicula')
+        variables['numero_presupuesto'] = correlativo
+        #-----------------------------------------------------------------------
         return super(Presupuesto, self).create(variables)
 
     def write(self, variables):
