@@ -87,6 +87,7 @@
 
                     </group>
                     <!-- notebook avisa a odoo que usaran pestañas !-->
+                    <separator string="Detalles"/>
                     <notebook>
                         <page string="Presupuesto">
                             <group>
@@ -102,15 +103,23 @@
                         </page>
 
                         <page string="Otra informacion">
-<!--                            <group>-->
-<!--                                <group>-->
-<!--                                    <field name="actores_ids" widget="many2many_tags" style="display:flex;"/>-->
+                            <group>
+                                <group>
 
-<!--                                </group>-->
-<!--                            </group>-->
-<!--                            <group>-->
+<!--                                    <field name="actor_director_id" widget="many2many_tags" style="display:flex;"/>-->
+                                    <field name="actor_ids"
+                                   domain="[('category_id', 'in', [actor_director_id])]"
+                                   widget="many2many_tags"
+                                    options="{'no_create': True, 'no_open': True}"></field>
+                                    <field name="actor_director_id" invisible="1"/>
+                                    <field name="opinion" type="html"  options="{'codeview': true}"/>
+<!--                                    <field name="opinion" type="html" widget="html" options="{'codeview': true}"/>-->
 
-<!--                            </group>-->
+                                </group>
+                            </group>
+                            <group>
+
+                            </group>
                         </page>
 
                     </notebook>
