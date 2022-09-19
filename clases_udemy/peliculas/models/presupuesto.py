@@ -51,7 +51,9 @@ class Presupuesto(models.Model):
         #default=lambda  self: self.env['res.partner.category'].search([('name', '=', 'director')])
 
     )
-
+    # generos_ids = fields.Many2many(
+    #
+    # )
     ''' CODIGO PARA RELACIONAR BASE DE DATOS MANY 2 MANY'''
     genero_ids = fields.Many2many(
         comodel_name = 'genero',
@@ -69,6 +71,7 @@ class Presupuesto(models.Model):
                                         ('cancelado', 'Cancelado'),
                              ], default='borrador', string='Estados', copy=False)
     fch_aprobado = fields.Datetime(string='Fecha aprobado', copy=False)
+    fch_publicado = fields.Datetime(string='Fecha publicado', copy=False, default=lambda self: fields.Datetime.now())
 
     numero_presupuesto = fields.Char(string='Numero Presupuesto', copy=False)
     def aprobar_presupuesto(self):

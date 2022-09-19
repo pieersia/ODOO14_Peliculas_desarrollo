@@ -75,8 +75,8 @@
                                    options="{'no_create': True, 'no_open': True}"/>
                             <field name="categoria_director_id" invisible="1"/>
                             <field name="link_trailer" widget="url"/>
-                            <field name="fch_aprobado" readonly="1"/>
-                            <field name="numero_presupuesto" readonly="1"/>
+<!--                            <field name="fch_aprobado" readonly="1"/>-->
+<!--                            <field name="numero_presupuesto" readonly="1"/>-->
 
                         </group>
                         <group>
@@ -86,6 +86,34 @@
                         </group>
 
                     </group>
+                    <!-- notebook avisa a odoo que usaran pestañas !-->
+                    <notebook>
+                        <page string="Presupuesto">
+                            <group>
+                                <group>
+                                    <field name="numero_presupuesto" readonly="1"/>
+                                    <field name="fch_aprobado" readonly="1"/>
+                                    <field name="fch_publicado" readonly="1"/>
+                                </group>
+                                <group>
+
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Otra informacion">
+<!--                            <group>-->
+<!--                                <group>-->
+<!--                                    <field name="actores_ids" widget="many2many_tags" style="display:flex;"/>-->
+
+<!--                                </group>-->
+<!--                            </group>-->
+<!--                            <group>-->
+
+<!--                            </group>-->
+                        </page>
+
+                    </notebook>
 
 
 
