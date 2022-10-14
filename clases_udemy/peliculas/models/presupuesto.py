@@ -83,7 +83,11 @@ class Presupuesto(models.Model):
     fch_publicado = fields.Datetime(string='Fecha publicado', copy=False, default=lambda self: fields.Datetime.now())
     numero_presupuesto = fields.Char(string='Numero Presupuesto', copy=False)
     opinion = fields.Html(string='Opinion')
-
+    detalle_ids = fields.One2many(
+        comodel_name='presupuesto.detalle',
+        inverse_name='presupuesto_id',
+        string='Detalles',
+    )
 
     def aprobar_presupuesto(self):
         logger.info('Entro a la funcion aprobar presupuesto')
@@ -170,6 +174,10 @@ class Presupuesto(models.Model):
 class PresupuestoDetalle(models.Model):
     _name = "presupuesto.detalle"
 
+    presupuesto_id = fields.Many2one(
+        comodel_name='presupuesto',
+        string='Presupuesto'
+    )
     name = fields.Many2one(
         comodel_name='recurso.cinematografico',
         string='Recurso'
