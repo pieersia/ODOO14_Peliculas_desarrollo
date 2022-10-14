@@ -192,7 +192,7 @@ class PresupuestoDetalle(models.Model):
         related='name.contacto_id'
     )
     imagen = fields.Binary(string='Imagen', related='name.imagen')
-    cantidad = fields.Float(string='Cantidad', default='1.0')
-    precio = fields.Float(string='Precio')
+    cantidad = fields.Float(string='Cantidad', default='1.0', digits=(16,4))
+    precio = fields.Float(string='Precio', digits='Product Price')
     importe = fields.Float(string='Importe')
 
