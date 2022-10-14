@@ -96,9 +96,19 @@
                                     <field name="fch_aprobado" readonly="1"/>
                                     <field name="fch_publicado" readonly="1"/>
                                 </group>
-                                <group>
-
-                                </group>
+                                <field name="detalle_ids">
+                                        <!-- tree para que lo pinto como una lista !-->
+                                        <tree>
+                                            <field name="presupuesto_id"/>
+                                            <field name="name"/>
+                                            <field name="descripcion"/>
+                                            <field name="contacto_id"/>
+                                            <field name="imagen"/>
+                                            <field name="cantidad"/>
+                                            <field name="precio"/>
+                                            <field name="importe"/>
+                                        </tree>
+                                    </field>
                             </group>
                         </page>
 
