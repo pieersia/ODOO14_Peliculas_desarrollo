@@ -167,3 +167,24 @@ class Presupuesto(models.Model):
             raise UserError('No se puede eliminar el registro, porque no se encuentra en estado cancelado')
             #logger.info('************** No se puede eliminar, por que no se encuentra en el estado cancelado')
     '''
+class PresupuestoDetalle(models.Model):
+    _name = "presupuesto.detalle"
+
+    name = fields.Many2one(
+        comodel_name='recurso.cinematografico',
+        string='Recurso'
+    )
+    descripcion = fields.Char(
+        string='Descripcion',
+        related='name.descripcion'
+    )
+    contacto_id=fields.Many2one(
+        comodel_name='res.partner',
+        string='Contacto',
+        related='name.contacto_id'
+    )
+    imagen = fields.Binary(string='Imagen', related='name.imagen')
+    cantidad = fields.Float(string='Cantidad', default='1.0')
+    precio = fields.Float(string='Precio')
+    importe = fields.Float(string='Importe')
+
