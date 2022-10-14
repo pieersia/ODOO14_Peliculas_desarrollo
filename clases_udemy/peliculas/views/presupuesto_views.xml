@@ -98,7 +98,7 @@
                                 </group>
                                 <field name="detalle_ids">
                                         <!-- tree para que lo pinto como una lista !-->
-                                        <tree>
+                                        <tree editable="bottom">
                                             <field name="presupuesto_id"/>
                                             <field name="name"/>
                                             <field name="descripcion"/>
