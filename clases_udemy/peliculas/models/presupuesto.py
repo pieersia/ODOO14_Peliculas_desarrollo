@@ -88,6 +88,7 @@ class Presupuesto(models.Model):
         inverse_name='presupuesto_id',
         string='Detalles',
     )
+    campos_ocultos = fields.Boolean(string='Campos Ocultos')
 
     def aprobar_presupuesto(self):
         logger.info('Entro a la funcion aprobar presupuesto')

@@ -96,23 +96,26 @@
                                     <field name="fch_aprobado" readonly="1"/>
                                     <field name="fch_publicado" readonly="1"/>
                                 </group>
-                                <field name="detalle_ids">
-                                        <!-- tree para que lo pinto como una lista !-->
-                                        <tree editable="bottom">
-                                            <control>
-                                                <create name="add_product_control" string="Agregar recurso cinematografico"/>
-                                            </control>
-                                            <field name="presupuesto_id"/>
-                                            <field name="name"/>
-                                            <field name="descripcion"/>
-                                            <field name="contacto_id"/>
-                                            <field name="imagen" widget="image" options="{'size': [80,50]}" optional="show"/>
-                                            <field name="cantidad"/>
-                                            <field name="precio"/>
-                                            <field name="importe"/>
-                                        </tree>
-                                    </field>
+                                <group>
+                                    <field name="campos_ocultos" widget="boolean_toggle"/>
+                                </group>
                             </group>
+                            <field name="detalle_ids">
+                                <!-- tree para que lo pinto como una lista !-->
+                                <tree editable="bottom">
+                                    <control>
+                                        <create name="add_product_control" string="Agregar recurso cinematografico"/>
+                                    </control>
+                                    <field name="presupuesto_id"/>
+                                    <field name="name"/>
+                                    <field name="descripcion" attrs="{'column_invisible':[('parent.campos_ocultos', '=', False)]}"/>
+                                    <field name="contacto_id"/>
+                                    <field name="imagen" widget="image" options="{'size': [80,50]}" optional="show"/>
+                                    <field name="cantidad" optional="show"/>
+                                    <field name="precio"/>
+                                    <field name="importe"/>
+                                </tree>
+                            </field>
                         </page>
 
                         <page string="Otra informacion">
