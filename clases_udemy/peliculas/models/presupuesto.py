@@ -201,3 +201,8 @@ class PresupuestoDetalle(models.Model):
     def _onchange_name(self):
         if self.name:
             self.precio = self.name.precio
+
+    @api.onchange('cantidad', 'precio')
+    def _onchange_importe(self):
+        self.importe = self.cantidad * self.precio
+
