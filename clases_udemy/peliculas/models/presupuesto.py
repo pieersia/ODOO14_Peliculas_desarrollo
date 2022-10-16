@@ -197,3 +197,7 @@ class PresupuestoDetalle(models.Model):
     precio = fields.Float(string='Precio', digits='Product Price')
     importe = fields.Float(string='Importe')
 
+    @api.onchange('name')
+    def _onchange_name(self):
+        if self.name:
+            self.precio = self.name.precio
