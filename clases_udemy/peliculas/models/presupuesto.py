@@ -90,6 +90,12 @@ class Presupuesto(models.Model):
     )
     campos_ocultos = fields.Boolean(string='Campos Ocultos')
 
+    currency_id = fields.Many2one(
+        comodel_name='res.currency',
+        string='Moneda',
+        default=lambda self: self.env.company.currency_id.id,
+    )
+
     def aprobar_presupuesto(self):
         logger.info('Entro a la funcion aprobar presupuesto')
         self.state = 'aprobado'
@@ -195,7 +201,14 @@ class PresupuestoDetalle(models.Model):
     imagen = fields.Binary(string='Imagen', related='name.imagen')
     cantidad = fields.Float(string='Cantidad', default='1.0', digits=(16,4))
     precio = fields.Float(string='Precio', digits='Product Price')
-    importe = fields.Float(string='Importe')
+    importe = fields.Monetary(string='Importe')
+
+    #esto siempre va se se usa multimoneda
+    currency_id = fields.Many2one(
+        comodel_name='res.currency',
+        string='Moneda',
+        related='presupuesto_id.currency_id'
+    )
 
     @api.onchange('name')
     def _onchange_name(self):

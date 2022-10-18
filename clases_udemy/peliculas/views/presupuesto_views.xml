@@ -98,6 +98,7 @@
                                 </group>
                                 <group>
                                     <field name="campos_ocultos" widget="boolean_toggle"/>
+                                    <field name="currency_id"/>
                                 </group>
                             </group>
                             <field name="detalle_ids">
@@ -114,6 +115,7 @@
                                     <field name="cantidad" optional="show"/>
                                     <field name="precio"/>
                                     <field name="importe" readonly="1" force_save="1"/>
+                                    <field name="currency_id" invisible="1"/>
                                 </tree>
                             </field>
                         </page>
