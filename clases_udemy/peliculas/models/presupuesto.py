@@ -11,6 +11,15 @@ class Presupuesto(models.Model):
     _name = "presupuesto"
     _inherit = ['image.mixin'] #crear imagen
 
+    def _compute_total(self):
+        for record in self:
+            sub_total = 0
+            for linea in record.detalle_ids:
+                sub_total += linea.importe
+            record.base = sub_total
+            record.impuestos = sub_total * 0.18
+            record.total = sub_total *1.18
+            
     #crea el campo dentro de la tabla
     name = fields.Char(string='Pelicula')
     gasto = fields.Float(string='gasto')
@@ -95,11 +104,13 @@ class Presupuesto(models.Model):
         string='Moneda',
         default=lambda self: self.env.company.currency_id.id,
     )
+
+    #DEFINICION DE LOS CAMPOS PARA HALLAR EL TOTAL
     terminos = fields.Text(string='Terminos')
     base = fields.Monetary(string='Base imponible', compute='_compute_total')
     impuestos = fields.Monetary(string='Impuestos', compute='_compute_total')
     total = fields.Monetary(string='Total', compute='_compute_total')
-    
+
 
     def aprobar_presupuesto(self):
         logger.info('Entro a la funcion aprobar presupuesto')
