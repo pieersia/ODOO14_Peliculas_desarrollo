@@ -11,6 +11,7 @@ class Presupuesto(models.Model):
     _name = "presupuesto"
     _inherit = ['image.mixin'] #crear imagen
 
+    @api.depends('detalle_ids')
     def _compute_total(self):
         for record in self:
             sub_total = 0
