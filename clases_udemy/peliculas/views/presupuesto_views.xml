@@ -118,6 +118,23 @@
                                     <field name="currency_id" invisible="1"/>
                                 </tree>
                             </field>
+                            <group col="6" class="mt-2 mt-md-0">
+                                <group colspan="4">
+                                    <field name="terminos" nolabel="1" placeholder="Terminos y Condiciones..."/>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right" colspan="2">
+                                    <field name="base" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                    <field name="impuestos"/>
+                                    <div class="oe_subtotal_footer_separator oe_line o_td_label">
+                                        <label for="total"/>
+                                    </div>
+                                    <field name="total" nolabel="1" class="oe_subtotal_foorter_separator" widget="monetary"
+                                           options="{'currency_field': 'currency_id'}"/>
+
+                                </group>
+                                <div class="oe_clear"/>
+
+                            </group>
                         </page>
 
                         <page string="Otra informacion">
