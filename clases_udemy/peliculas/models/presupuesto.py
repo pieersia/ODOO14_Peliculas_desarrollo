@@ -95,6 +95,11 @@ class Presupuesto(models.Model):
         string='Moneda',
         default=lambda self: self.env.company.currency_id.id,
     )
+    terminos = fields.Text(string='Terminos')
+    base = fields.Monetary(string='Base imponible', compute='_compute_total')
+    impuestos = fields.Monetary(string='Impuestos', compute='_compute_total')
+    total = fields.Monetary(string='Total', compute='_compute_total')
+    
 
     def aprobar_presupuesto(self):
         logger.info('Entro a la funcion aprobar presupuesto')
