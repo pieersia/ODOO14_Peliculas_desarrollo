@@ -190,13 +190,20 @@
         <field name="name">Vista lista de presupuesto</field>
         <field name="model">presupuesto</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-success="state == 'aprobado'" decoration-warning="state == 'cancelado'">
                 <field name="name"/>
                 <field name="numero_presupuesto"/>
                 <field name="fch_publicado"/>
                 <field name="total" sum="suma_total"/>
                 <field name="state"/>
             </tree>
+            <!-- decoration-bf: negrita !-->
+            <!-- decoration-it: cursiva !-->
+            <!-- decoration-danger: color rojo !-->
+            <!-- decoration-info: color azul claro !-->
+            <!-- decoration-muted: color gris claro !-->
+            <!-- decoration-success: color verde !-->
+            <!-- decoration-warning: color mostaza !-->
         </field>
     </record>
 </odoo>
