@@ -194,7 +194,7 @@
                 <field name="name"/>
                 <field name="numero_presupuesto"/>
                 <field name="fch_publicado"/>
-                <field name="total"/>
+                <field name="total" sum="suma_total"/>
                 <field name="state"/>
             </tree>
         </field>
