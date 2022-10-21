@@ -195,7 +195,7 @@
                 <field name="numero_presupuesto"/>
                 <field name="fch_publicado"/>
                 <field name="total" sum="suma_total"/>
-                <field name="state"/>
+                <field name="state" widget="badge" decoration-success="state == 'aprobado'" decoration-warning="state == 'cancelado'"/>
             </tree>
             <!-- decoration-bf: negrita !-->
             <!-- decoration-it: cursiva !-->
