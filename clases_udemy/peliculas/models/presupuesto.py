@@ -76,7 +76,7 @@ class Presupuesto(models.Model):
     ''' CODIGO PARA RELACIONAR BASE DE DATOS MANY 2 MANY'''
     genero_ids = fields.Many2many(
         comodel_name = 'genero',
-        string='Géneros'
+        string='Generos'
     )
 
     vista_general = fields.Text(string='Descripción')

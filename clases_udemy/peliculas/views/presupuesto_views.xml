@@ -61,9 +61,10 @@
                                   style="font-size: 8px; padding: 5px 5px;"/> <!-- cambiar el tamaño del circulo con font size y para separar con espacios es padding !-->
                             <field name="fch_estreno" />
                         </div>
+
                         <div class="o_row">
                             <!-- para convertir en etiqueta es many2many tags(etiquetas) !-->
-                            <field name="genero_ids" widget="many2many_tags" style="display:flex;"/>
+                            <field name="genero_ids" widget="many2many_tags" style="display: flex"/>
                         </div>
                     </div>
                     <!-- texto morado !-->
@@ -144,8 +145,8 @@
 <!--                                    <field name="actor_director_id" widget="many2many_tags" style="display:flex;"/>-->
                                     <field name="actor_ids"
                                    domain="[('category_id', 'in', [actor_director_id])]"
-                                   widget="many2many_tags"
-                                    options="{'no_create': True, 'no_open': True}"></field>
+                                   options="{'no_create': True, 'no_open': True}"
+                                           widget="many2many_tags"></field>
                                     <field name="actor_director_id" invisible="1"/>
                                     <field name="opinion" type="html"  options="{'codeview': true}"/>
 <!--                                    <field name="opinion" type="html" widget="html" options="{'codeview': true}"/>-->
@@ -204,6 +205,29 @@
             <!-- decoration-muted: color gris claro !-->
             <!-- decoration-success: color verde !-->
             <!-- decoration-warning: color mostaza !-->
+        </field>
+    </record>
+
+    <record id="view_kanban_presupuesto" model="ir.ui.view">
+        <field name="name">Presupuesto Kanban</field>
+        <field name="model">presupuesto</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+<!--                <field name="currency_id"/>-->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img t-att-src="kanban_image('presupuesto', 'image_128', record.id.raw_value)" class="o_image_64_contain"/>
+                            </div>
+
+<!--                            <div class="oe_kanban_details">-->
+<!--                            </div>-->
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 </odoo>

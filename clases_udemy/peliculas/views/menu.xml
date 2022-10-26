@@ -6,7 +6,7 @@
         <!-- Modelo del archivo models/presupuesto.py del _name = "presupuesto" -->
         <field name="res_model">presupuesto</field>
         <!-- tree, es lista.  form, es formulario !-->
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
     <!--Recurso cinematografico !-->
     <record id="accion_open_recurso_cinematografico" model="ir.actions.act_window">
