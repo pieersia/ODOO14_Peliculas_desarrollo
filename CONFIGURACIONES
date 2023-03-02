@@ -1,3 +1,4 @@
+
 ******** CONFIGURACION SHELL *******
 Get-ExecutionPolicy -list    ---PARA VER LA CONFIGURACION
 
@@ -25,6 +26,11 @@ parametros se pone de esta manera   --- > --conf="E:\SEAD\CURSO EDUARDO\odoo14\o
 Para filtrar la base de datos,
   cuando tienes diferentes versiones cooriendo al mismo tiempo
    de ODOO es bueno poner "--db-filter="--> --conf="E:\SEAD\CURSO EDUARDO\odoo14\o14_com.conf" --db-filter=^db_pru* --http-port 8071 -d db_prueba -u peliculas
+
+   python odoo-bin -r odoo2 -w odoo --addons-path=addons -d db_prueba --http-port 8071 -d db_prueba -u peliculas
+
+   para activar el entorno virtual en visual code
+   source e:/SEAD/CURSO_EDUARDO/odoo14/venv/Scripts/activate
 Para cambiar el puerto: --http-port 8071
 Para seleccionar la BD: -d o14-com-sicurezza   **tener cuidado, poner el nombre correcto de la BD, osino creara uno nuevo**
 Para actualizar el modulo: -u peliculas   **peliculas, nombre de la carpeta**
